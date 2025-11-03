@@ -177,6 +177,37 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
+// ==================== Theme Toggle ====================
+function initTheme() {
+    // Set default theme to dark
+    if (!localStorage.getItem('theme')) {
+        localStorage.setItem('theme', 'dark');
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        // Apply saved theme
+        const savedTheme = localStorage.getItem('theme');
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+}
+
+// Initialize theme when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            // Toggle theme
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            // Update DOM and localStorage
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    }
+});
+
 // ==================== Console Message ====================
 console.log('%c Welcome to My Portfolio! ', 'background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-size: 20px; padding: 10px; border-radius: 5px;');
 console.log('%c Feel free to explore the code! ', 'color: #667eea; font-size: 14px;');
