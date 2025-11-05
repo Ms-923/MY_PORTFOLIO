@@ -155,6 +155,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     activateExplorerIcon();
     
+    // Add event listeners for window control buttons in the top-left corner
+    const closeControlBtn = document.querySelector('.window-controls .close');
+    const minimizeControlBtn = document.querySelector('.window-controls .minimize');
+    const maximizeControlBtn = document.querySelector('.window-controls .maximize');
+    
+    if (closeControlBtn) {
+        closeControlBtn.addEventListener('click', () => {
+            // Same functionality as the X button in the top-right
+            document.body.classList.add('closing');
+            setTimeout(() => {
+                if (confirm('Close this portfolio?')) {
+                    window.close();
+                    window.location.href = 'about:blank';
+                } else {
+                    document.body.classList.remove('closing');
+                }
+            }, 300);
+        });
+    }
+    
+    if (minimizeControlBtn) {
+        minimizeControlBtn.addEventListener('click', () => {
+            // Same functionality as the minimize button in the top-right
+            document.body.classList.add('minimized');
+            const restoreBar = document.createElement('div');
+            restoreBar.className = 'restore-bar';
+            restoreBar.innerHTML = '<span class="restore-title">VS Code Portfolio (Minimized)</span><span class="restore-button">Restore</span>';
+            document.body.appendChild(restoreBar);
+            restoreBar.querySelector('.restore-button').addEventListener('click', () => {
+                document.body.classList.remove('minimized');
+                restoreBar.remove();
+            });
+        });
+    }
+    
+    if (maximizeControlBtn) {
+        maximizeControlBtn.addEventListener('click', () => {
+            // Same functionality as the maximize button in the top-right
+            document.body.classList.toggle('maximized');
+        });
+    }
+    
     // Add event listener for mobile menu toggle
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     if (mobileMenuToggle) {
@@ -163,6 +205,66 @@ document.addEventListener('DOMContentLoaded', () => {
                 hideSidebar();
             } else {
                 showSidebar();
+            }
+        });
+    }
+    
+    // Add event listener for close button (X)
+    const closeButton = document.querySelector('.window-actions .fa-times').parentElement;
+    if (closeButton) {
+        closeButton.addEventListener('click', () => {
+            // Create closing animation
+            document.body.classList.add('closing');
+            
+            // After animation, prompt to close
+            setTimeout(() => {
+                if (confirm('Close this portfolio?')) {
+                    window.close();
+                    // If window.close() doesn't work (most browsers prevent it)
+                    // redirect to blank page or previous page
+                    window.location.href = 'about:blank';
+                    // Alternative: window.history.back();
+                } else {
+                    document.body.classList.remove('closing');
+                }
+            }, 300);
+        });
+    }
+    
+    // Add event listener for minimize button
+    const minimizeButton = document.querySelector('.window-actions .fa-minus').parentElement;
+    if (minimizeButton) {
+        minimizeButton.addEventListener('click', () => {
+            document.body.classList.add('minimized');
+            
+            // Create a restore bar
+            const restoreBar = document.createElement('div');
+            restoreBar.className = 'restore-bar';
+            restoreBar.innerHTML = '<span class="restore-title">VS Code Portfolio (Minimized)</span><span class="restore-button">Restore</span>';
+            document.body.appendChild(restoreBar);
+            
+            // Add event listener to restore button
+            restoreBar.querySelector('.restore-button').addEventListener('click', () => {
+                document.body.classList.remove('minimized');
+                restoreBar.remove();
+            });
+        });
+    }
+    
+    // Add event listener for maximize button
+    const maximizeButton = document.querySelector('.window-actions .fa-square').parentElement;
+    if (maximizeButton) {
+        maximizeButton.addEventListener('click', () => {
+            document.body.classList.toggle('maximized');
+            
+            // Toggle icon between maximize and restore down
+            const icon = maximizeButton.querySelector('i');
+            if (document.body.classList.contains('maximized')) {
+                icon.classList.remove('fa-square');
+                icon.classList.add('fa-clone');
+            } else {
+                icon.classList.remove('fa-clone');
+                icon.classList.add('fa-square');
             }
         });
     }
