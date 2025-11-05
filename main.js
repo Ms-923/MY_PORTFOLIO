@@ -155,6 +155,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     activateExplorerIcon();
     
+    // Add event listener for mobile menu toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', () => {
+            if (sidebarVisible) {
+                hideSidebar();
+            } else {
+                showSidebar();
+            }
+        });
+    }
+    
     // Add click event listeners to tabs
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
