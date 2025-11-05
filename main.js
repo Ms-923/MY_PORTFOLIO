@@ -109,9 +109,14 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function showSidebar() {
         if (sidebar) {
-            sidebar.style.display = 'block';
-            sidebar.style.visibility = 'visible';
-            sidebar.style.opacity = '1';
+            const sidebarContainer = document.querySelector('.sidebar-container');
+            if (window.innerWidth <= 576) {
+                sidebarContainer.classList.add('visible');
+            } else {
+                sidebar.style.display = 'block';
+                sidebar.style.visibility = 'visible';
+                sidebar.style.opacity = '1';
+            }
             sidebarVisible = true;
         }
     }
@@ -121,7 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function hideSidebar() {
         if (sidebar) {
-            sidebar.style.display = 'none';
+            const sidebarContainer = document.querySelector('.sidebar-container');
+            if (window.innerWidth <= 576) {
+                sidebarContainer.classList.remove('visible');
+            } else {
+                sidebar.style.display = 'none';
+            }
             sidebarVisible = false;
         }
     }
@@ -286,21 +296,43 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add event listener for window resize to ensure sidebar visibility
     window.addEventListener('resize', () => {
         if (explorerIcon.classList.contains('active') && sidebar) {
-            sidebar.style.display = 'block';
+            const sidebarContainer = document.querySelector('.sidebar-container');
+            if (window.innerWidth <= 576) {
+                if (sidebarVisible) {
+                    sidebarContainer.classList.add('visible');
+                } else {
+                    sidebarContainer.classList.remove('visible');
+                }
+            } else {
+                if (sidebarVisible) {
+                    sidebar.style.display = 'block';
+                    sidebar.style.visibility = 'visible';
+                    sidebar.style.opacity = '1';
+                } else {
+                    sidebar.style.display = 'none';
+                }
+            }
         }
     });
     
     // Add a periodic check to ensure sidebar is visible
     setInterval(() => {
-        if (explorerIcon && explorerIcon.classList.contains('active') && sidebar) {
-            if (sidebar.style.display === 'none' || 
-                getComputedStyle(sidebar).display === 'none' ||
-                getComputedStyle(sidebar).visibility === 'hidden' ||
-                getComputedStyle(sidebar).opacity === '0') {
-                
-                sidebar.style.display = 'block';
-                sidebar.style.visibility = 'visible';
-                sidebar.style.opacity = '1';
+        if (explorerIcon && explorerIcon.classList.contains('active') && sidebar && sidebarVisible) {
+            const sidebarContainer = document.querySelector('.sidebar-container');
+            if (window.innerWidth <= 576) {
+                if (!sidebarContainer.classList.contains('visible')) {
+                    sidebarContainer.classList.add('visible');
+                }
+            } else {
+                if (sidebar.style.display === 'none' || 
+                    getComputedStyle(sidebar).display === 'none' ||
+                    getComputedStyle(sidebar).visibility === 'hidden' ||
+                    getComputedStyle(sidebar).opacity === '0') {
+                    
+                    sidebar.style.display = 'block';
+                    sidebar.style.visibility = 'visible';
+                    sidebar.style.opacity = '1';
+                }
             }
         }
     }, 500);
