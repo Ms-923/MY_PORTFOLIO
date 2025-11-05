@@ -27,6 +27,11 @@
     --parameter-color: #9cdcfe;
 }
 
+/* ===== Global Styles ===== */
+:root {
+    --vh: 1vh;
+}
+
 /* ===== Base Styles ===== */
 * {
     margin: 0;
@@ -36,10 +41,11 @@
 
 body {
     font-family: 'Fira Code', monospace;
-    background-color: var(--bg-color);
+    background-color: var(--editor-bg);
     color: var(--text-color);
-    height: 100vh;
+    height: calc(var(--vh) * 100);
     overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* Custom Scrollbar Styling */
@@ -76,7 +82,8 @@ body {
 .vscode-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100vh; /* Fallback */
+    height: calc(var(--vh, 1vh) * 100);
 }
 
 /* ===== Title Bar ===== */
@@ -122,6 +129,10 @@ body {
 
 .action {
     cursor: pointer;
+}
+
+.mobile-menu-toggle {
+    display: none;
 }
 
 /* ===== Main Container ===== */
@@ -931,6 +942,35 @@ textarea.form-control {
     .contact-form {
         max-width: 100%;
     }
+    
+    .section-content {
+        padding: 15px;
+    }
+    
+    .profile-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .profile-image {
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+    
+    .project-card {
+        padding: 15px;
+    }
+    
+    .certificate-card, .badge-card {
+        flex-direction: column;
+    }
+    
+    .certificate-icon, .badge-icon {
+        margin-bottom: 10px;
+        margin-right: 0;
+        align-self: center;
+    }
 }
 
 /* ===== Status Bar ===== */
@@ -987,6 +1027,23 @@ textarea.form-control {
 }
 
 @media (max-width: 576px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .title {
+        font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 60%;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+        margin-right: 15px;
+    }
+    
     .sidebar-container {
         position: absolute;
         z-index: 100;
@@ -1029,5 +1086,52 @@ textarea.form-control {
         flex: 1;
         margin-left: 40px;
         width: calc(100% - 40px);
+    }
+    
+    .content-area {
+        padding: 15px 10px;
+    }
+    
+    .section-header h2 {
+        font-size: 20px;
+    }
+    
+    .resume-section h3 {
+        font-size: 18px;
+    }
+    
+    .timeline-header h4 {
+        font-size: 16px;
+    }
+    
+    .certificate-content h4, .badge-info h3 {
+        font-size: 16px;
+    }
+    
+    .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .skill-list {
+        gap: 5px;
+    }
+    
+    .skill-tag {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+    
+    .contact-item span {
+        font-size: 13px;
+        word-break: break-word;
+    }
+    
+    .status-bar {
+        font-size: 10px;
+    }
+    
+    .left-items, .right-items {
+        gap: 8px;
     }
 }
