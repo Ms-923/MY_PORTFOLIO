@@ -3,49 +3,534 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>VS Code Portfolio</title>
+    <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="nav-brand">MD SAIF</a>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="resume.html">Resume</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="certifications.html">Certifications</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-moon"></i>
-                </button></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+    <div class="vscode-container">
+        <!-- Title Bar -->
+        <div class="title-bar">
+            <div class="window-controls">
+                <span class="control close"></span>
+                <span class="control minimize"></span>
+                <span class="control maximize"></span>
+            </div>
+            <div class="title">portfolio.js - VS Code Portfolio</div>
+            <div class="window-actions">
+                <span class="action"><i class="fas fa-minus"></i></span>
+                <span class="action"><i class="far fa-square"></i></span>
+                <span class="action"><i class="fas fa-times"></i></span>
             </div>
         </div>
-    </nav> 
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Welcome to My Portfolio</h1>
-            <p class="hero-subtitle">Front-end Developer | Student Intern</p>
-            <div class="hero-buttons">
-                <a href="about.html" class="btn btn-primary">Learn More</a>
-                <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
+        <!-- Main Container -->
+        <div class="main-container">
+            <!-- Activity Bar and Sidebar Container -->
+            <div class="sidebar-container">
+                <!-- Activity Bar -->
+                <div class="activity-bar">
+                    <div class="activity-icons">
+                        <div class="activity-icon active" data-section="explorer" id="explorer-icon">
+                            <i class="far fa-copy"></i>
+                            <span class="tooltip">Explorer</span>
+                        </div>
+                        <div class="activity-icon" data-section="search">
+                            <i class="fas fa-search"></i>
+                            <span class="tooltip">Search</span>
+                        </div>
+                        <div class="activity-icon" data-section="git">
+                            <i class="fas fa-code-branch"></i>
+                            <span class="tooltip">Source Control</span>
+                        </div>
+                        <div class="activity-icon" data-section="debug">
+                            <i class="fas fa-bug"></i>
+                            <span class="tooltip">Run and Debug</span>
+                        </div>
+                        <div class="activity-icon" data-section="extensions">
+                            <i class="fas fa-puzzle-piece"></i>
+                            <span class="tooltip">Extensions</span>
+                        </div>
+                    </div>
+                    <div class="bottom-icons">
+                        <div class="activity-icon">
+                            <i class="fas fa-user-circle"></i>
+                            <span class="tooltip">Account</span>
+                        </div>
+                        <div class="activity-icon">
+                            <i class="fas fa-cog"></i>
+                            <span class="tooltip">Settings</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="sidebar" id="explorer-sidebar">
+                <div class="sidebar-header">
+                    <span>EXPLORER: PORTFOLIO</span>
+                    <span class="sidebar-actions">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <i class="fas fa-chevron-down"></i>
+                    </span>
+                </div>
+                <div class="folder-structure">
+                    <div class="folder open">
+                        <span class="folder-name"><i class="fas fa-chevron-down"></i> <i class="fas fa-folder-open"></i> portfolio</span>
+                            <div class="folder-contents">
+                                <div class="file active" data-file="about"><i class="fas fa-file-code"></i> about.js</div>
+                                <div class="file" data-file="education"><i class="fas fa-file-code"></i> education.js</div>
+                                <div class="file" data-file="resume"><i class="fas fa-file-code"></i> resume.js</div>
+                                <div class="file" data-file="certificates"><i class="fas fa-file-code"></i> certificates.js</div>
+                                <div class="file" data-file="contact"><i class="fas fa-file-code"></i> contact.js</div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <!-- Editor Area -->
+            <div class="editor-area">
+                <!-- Tabs -->
+                <div class="tabs">
+                    <div class="tab active" data-tab="about">
+                        <span><i class="fab fa-js-square"></i> about.js</span>
+                    </div>
+                    <div class="tab" data-tab="education">
+                        <span><i class="fab fa-js-square"></i> education.js</span>
+                    </div>
+                    <div class="tab" data-tab="resume">
+                        <span><i class="fab fa-js-square"></i> resume.js</span>
+                    </div>
+                    <div class="tab" data-tab="certificates">
+                        <span><i class="fab fa-js-square"></i> certificates.js</span>
+                    </div>
+                    <div class="tab" data-tab="contact">
+                        <span><i class="fab fa-js-square"></i> contact.js</span>
+                    </div>
+                </div>
+
+                <!-- Editor Content -->
+                <div class="editor-content">
+                    <!-- Content Sections -->
+                    <div class="content-area">
+                        <!-- About Section -->
+                        <div class="content-section active" id="about-section">
+                            <div class="section-header">
+                                <h2>About Me</h2>
+                            </div>
+                            <div class="section-content">
+                                <div class="profile-info">
+                                    <div class="profile-header">
+                                        <h1>MOHAMMED SAIF</h1>
+                                        <h3>Web Developer</h3>
+                                    </div>
+                                    <div class="profile-description">
+                                        <p>Computer Science Engineering student at Muffakham Jah College of Engineering & Technology, passionate about web technologies and IoT innovation.</p>
+                                        <p>Skilled in cloud technologies and project management. Eager to contribute as a Front-end developer and intern in dynamic tech environments.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Education Section -->
+                        <div class="content-section" id="education-section">
+                            <div class="section-header">
+                                <h2>Education</h2>
+                            </div>
+                            <div class="section-content">
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <div class="timeline-content">
+                                            <div class="timeline-header">
+                                                <h4>Bachelor of Engineering in Computer Science</h4>
+                                                <span class="timeline-date">Jun 2025 – 2028 (Present-2nd year)</span>
+                                            </div>
+                                            <p class="timeline-institution">Muffakham Jah College of Engineering & Technology</p>
+                                            <p class="timeline-description"></p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <div class="timeline-content">
+                                            <div class="timeline-header">
+                                                <h4>Diploma in Computer Science Engineering</h4>
+                                                <span class="timeline-date">Jul 2022 – Apr 2025</span>
+                                            </div>
+                                            <p class="timeline-institution">Brilliant Group of Technical Institutions</p>
+                                            <p class="timeline-description">With CGPA of 7.93/10</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <div class="timeline-content">
+                                            <div class="timeline-header">
+                                                <h4>Secondary School Certificate | SSC</h4>
+                                                <span class="timeline-date">2021 - 2022</span>
+                                            </div>
+                                            <p class="timeline-institution">Loyola High School</p>
+                                            <p class="timeline-description">With CGPA of 8.0/10</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Resume Section -->
+                        <div class="content-section" id="resume-section">
+                            <div class="section-header">
+                                <h2>Resume</h2>
+                            </div>
+                            <div class="section-content">
+                                <!-- Experience Subsection -->
+                                <div class="resume-section">
+                                    <h3><i class="fas fa-briefcase"></i> Experience</h3>
+                                    <div class="timeline">
+                                        <div class="timeline-item">
+                                            <div class="timeline-dot"></div>
+                                            <div class="timeline-content">
+                                                <div class="timeline-header">
+                                                    <h4>Team Leader & Project Manager</h4>
+                                                    <span class="timeline-date">Nov 2024 - May 2025 (7 months)</span>
+                                                </div>
+                                                <p class="timeline-institution">Central Institute of Tool Design</p>
+                                                <div class="timeline-description">
+                                                    <ul>
+                                                        <li>Led a technical team and managed the assigned project from initiation to completion.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Projects Subsection -->
+                                <div class="resume-section">
+                                    <h3><i class="fas fa-laptop-code"></i> Projects</h3>
+                                    
+                                    <div class="project-card">
+                                        <h4>Smart Home Automation System</h4>
+                                        <div class="project-tech">
+                                            <span class="tech-tag">HTML ,CSS</span>
+                                            <span class="tech-tag">JavaScript</span>
+                                            <span class="tech-tag">MongoDB</span>
+                                            <span class="tech-tag">Raspberry Pi</span>
+                                        </div>
+                                        <p>Cloud-Enabled IoT Framework for Smart Home Automation</p>
+                                        <div class="project-links">
+                                            <!--<a href="https://github.com/yourusername/portfolio" target="_blank"><i class="fab fa-github"></i> GitHub</a>-->
+                                            <a href="https://iot-homeautomation.onrender.com/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                
+                                <!-- Skills Subsection -->
+                                <div class="resume-section">
+                                    <h3><i class="fas fa-code"></i> Skills</h3>
+                                    
+                                    <div class="skills-category">
+                                        <h4>Languages</h4>
+                                        <div class="skill-list">
+                                            <span class="skill-tag">HTML5</span>
+                                            <span class="skill-tag">CSS3</span>
+                                            <span class="skill-tag">Python</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="skills-category">
+                                        <h4>Tools & Technologies</h4>
+                                        <div class="tools-grid">
+                                            <span class="tool-item">Git</span>
+                                            <span class="tool-item">VS Code</span>
+                                            <span class="tool-item">MongoDB</span>
+                                            <span class="tool-item">Cloud Storage</span>
+                                            <span class="tool-item">Internet of Things</span>
+                                            <span class="tool-item">Raspberry Pi</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="skills-category">
+                                        <h4>Other Skills</h4>
+                                        <div class="tools-grid">
+                                            <span class="tool-item">Project Management</span>
+                                            <span class="tool-item">Team Management</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Certificates Section -->
+                        <div class="content-section" id="certificates-section">
+                            <div class="section-header">
+                                <h2>Certificates & Badges</h2>
+                            </div>
+                            <div class="section-content">
+                                <!-- Certificates Subsection -->
+                                <div class="resume-section">
+                                    <h3><i class="fas fa-certificate"></i> Certificates</h3>
+                                    <div class="certificates-grid">
+                                        <!-- Certificate 1 - IoT Project Certificate -->
+                                        <div class="certificate-card">
+                                            <div class="certificate-icon">
+                                                <i class="fas fa-microchip"></i>
+                                            </div>
+                                            <div class="certificate-content">
+                                                <h4>Smart Home Automation System</h4>
+                                                <p class="certificate-issuer">Central Institute of Tool Design - Central Govt</p>
+                                                <p class="certificate-date">MAY 2025</p>
+                                                <a href="IOT PROJECT CERTIFICATE.pdf" class="certificate-link" target="_blank">
+                                                    <i class="fas fa-file-pdf"></i> View Certificate
+                                                </a>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Certificate 2 - Python HackerRank -->
+                                        <div class="certificate-card">
+                                            <div class="certificate-icon">
+                                                <i class="fab fa-python"></i>
+                                            </div>
+                                            <div class="certificate-content">
+                                                <h4>Python</h4>
+                                                <p class="certificate-issuer">HackerRank</p>
+                                                <p class="certificate-date">Issued: 12 Aug 2025</p>
+                                                <a href="https://www.hackerrank.com/certificates/iframe/3613c67c347d" class="certificate-link" target="_blank">
+                                                    <i class="fas fa-external-link-alt"></i> Verify Certificate
+                                                </a>
+                                            </div>
+                                        </div>
+                                     
+                                    </div>
+                                </div>
+                                
+                                <!-- Badges Subsection -->
+                                <div class="resume-section">
+                                    <h3><i class="fas fa-award"></i> Badges</h3>
+                                    <div class="badges-grid">
+                                        <!-- Badge 1 -->
+                                        <div class="badge-card">
+                                            <div class="badge-icon">
+                                                <i class="fab fa-google"></i>
+                                            </div>
+                                            <div class="badge-info">
+                                                <h3>Level 3: Generative AI</h3>
+                                                <p class="badge-platform">Google Cloud</p>
+                                                <p class="badge-date">Issued: Oct 14, 2025</p>
+                                                <a href="https://www.cloudskillsboost.google/public_profiles/e07dbc5d-b44b-4d7e-b2fc-79c31cfb4c5d/badges/19162457" class="badge-link" target="_blank">See Badge <i class="fas fa-external-link-alt"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <!-- Badge 2 -->
+                                        <div class="badge-card">
+                                            <div class="badge-icon">
+                                                <i class="fab fa-google"></i>
+                                            </div>
+                                            <div class="badge-info">
+                                                <h3>API Gateway</h3>
+                                                <p class="badge-platform">Google Cloud</p>
+                                                <p class="badge-date">Issued: Oct 5, 2025</p>
+                                                <a href="https://www.cloudskillsboost.google/public_profiles/e07dbc5d-b44b-4d7e-b2fc-79c31cfb4c5d/badges/18868771" class="badge-link" target="_blank">See Badge <i class="fas fa-external-link-alt"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <!-- Badge 3 -->
+                                        <div class="badge-card">
+                                            <div class="badge-icon">
+                                                <i class="fab fa-google"></i>
+                                            </div>
+                                            <div class="badge-info">
+                                                <h3>Google Workspace Tools</h3>
+                                                <p class="badge-platform">Google Cloud</p>
+                                                <p class="badge-date">Issued: Oct 9, 2025</p>
+                                                <a href="https://www.cloudskillsboost.google/public_profiles/e07dbc5d-b44b-4d7e-b2fc-79c31cfb4c5d/badges/18994622" class="badge-link" target="_blank">See Badge <i class="fas fa-external-link-alt"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <!-- Badge 4 -->
+                                        <div class="badge-card">
+                                            <div class="badge-icon">
+                                                <i class="fab fa-google"></i>
+                                            </div>
+                                            <div class="badge-info">
+                                                <h3>App Building with AppSheet</h3>
+                                                <p class="badge-platform">Google Cloud</p>
+                                                <p class="badge-date">Issued: Oct 10, 2025</p>
+                                                <a href="https://www.cloudskillsboost.google/public_profiles/e07dbc5d-b44b-4d7e-b2fc-79c31cfb4c5d/badges/19027382" class="badge-link" target="_blank">See Badge <i class="fas fa-external-link-alt"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <!-- Badge 5 -->
+                                        <div class="badge-card">
+                                            <div class="badge-icon">
+                                                <i class="fab fa-google"></i>
+                                            </div>
+                                            <div class="badge-info">
+                                                <h3>Develop with Apps Script and AppSheet</h3>
+                                                <p class="badge-platform">Google Cloud</p>
+                                                <p class="badge-date">Issued: Oct 10, 2025</p>
+                                                <a href="https://www.cloudskillsboost.google/public_profiles/e07dbc5d-b44b-4d7e-b2fc-79c31cfb4c5d/badges/19028769" class="badge-link" target="_blank">See Badge <i class="fas fa-external-link-alt"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <!-- Badge 6 -->
+                                        <div class="badge-card">
+                                            <div class="badge-icon">
+                                                <i class="fab fa-google"></i>
+                                            </div>
+                                            <div class="badge-info">
+                                                <h3>Build a Website on Google Cloud</h3>
+                                                <p class="badge-platform">Google Cloud</p>
+                                                <p class="badge-date">Issued: Oct 10, 2025</p>
+                                                <a href="https://www.cloudskillsboost.google/public_profiles/e07dbc5d-b44b-4d7e-b2fc-79c31cfb4c5d/badges/19033157" class="badge-link" target="_blank">See Badge <i class="fas fa-external-link-alt"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <!-- Badge 7 -->
+                                        <div class="badge-card">
+                                            <div class="badge-icon">
+                                                <i class="fab fa-google"></i>
+                                            </div>
+                                            <div class="badge-info">
+                                                <h3>Set Up a Google Cloud Network</h3>
+                                                <p class="badge-platform">Google Cloud</p>
+                                                <p class="badge-date">Issued: Oct 11, 2025</p>
+                                                <a href="https://www.cloudskillsboost.google/public_profiles/e07dbc5d-b44b-4d7e-b2fc-79c31cfb4c5d/badges/19055384" class="badge-link" target="_blank">See Badge <i class="fas fa-external-link-alt"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <!-- Badge 8 -->
+                                        <div class="badge-card">
+                                            <div class="badge-icon">
+                                                <i class="fab fa-google"></i>
+                                            </div>
+                                            <div class="badge-info">
+                                                <h3>Cloud Speech API</h3>
+                                                <p class="badge-platform">Google Cloud</p>
+                                                <p class="badge-date">Issued: Oct 12, 2025</p>
+                                                <a href="https://www.cloudskillsboost.google/public_profiles/e07dbc5d-b44b-4d7e-b2fc-79c31cfb4c5d/badges/19083607" class="badge-link" target="_blank">See Badge <i class="fas fa-external-link-alt"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <!-- Badge 9 -->
+                                        <div class="badge-card">
+                                            <div class="badge-icon">
+                                                <i class="fab fa-google"></i>
+                                            </div>
+                                            <div class="badge-info">
+                                                <h3>Prompt Design in Vertex AI</h3>
+                                                <p class="badge-platform">Google Cloud</p>
+                                                <p class="badge-date">Issued: Oct 13, 2025</p>
+                                                <a href="https://www.cloudskillsboost.google/public_profiles/e07dbc5d-b44b-4d7e-b2fc-79c31cfb4c5d/badges/19113903" class="badge-link" target="_blank">See Badge <i class="fas fa-external-link-alt"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Section -->
+                        <div class="content-section" id="contact-section">
+                            <div class="section-header">
+                                <h2>Contact Me</h2>
+                            </div>
+                            <div class="section-content">
+                                <div class="contact-container">
+                                    <div class="contact-details">
+                                        <div class="contact-info">
+                                            <div class="contact-item">
+                                                <i class="fas fa-envelope"></i>
+                                                <span>mohammedsaifms2006@gmail.com</span>
+                                            </div>
+                                            <div class="contact-item">
+                                                <i class="fas fa-phone"></i>
+                                                <span>+91 9000551704</span>
+                                            </div>
+                                            <div class="contact-item">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <span>Hyderabad , Telangana, India</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="social-links">
+                                            <a href="https://github.com/Ms-923" target="_blank" class="social-link">
+                                                <i class="fab fa-github"></i>
+                                            </a>
+                                            <a href="https://www.linkedin.com/in/mohammedsaif923" target="_blank" class="social-link">
+                                                <i class="fab fa-linkedin"></i>
+                                            </a>
+                                            <a href="https://www.instagram.com/md.saif____" target="_blank" class="social-link">
+                                                <i class="fab fa-instagram"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                                    <input type="hidden" name="access_key" value="119658f1-7ebb-4eba-b010-d99db2e629ea">
+                                    <input type="hidden" name="subject" value="New message from VS Code Portfolio">
+                                    <input type="hidden" name="from_name" value="VS Code Portfolio Contact Form">
+                                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                                    <div class="form-group">
+                                        <label for="name">Your Name</label>
+                                        <input type="text" id="name" name="name" class="form-control" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="email">Your Email</label>
+                                        <input type="email" id="email" name="email" class="form-control" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="subject">Subject</label>
+                                        <input type="text" id="subject" name="subject" class="form-control" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="message">Message</label>
+                                        <textarea id="message" name="message" class="form-control" rows="4" required></textarea>
+                                    </div>
+
+                                    <div id="form-status">
+                                        <div class="alert alert-success" id="form-success">
+                                            <i class="fas fa-check-circle"></i> Your message has been sent successfully!
+                                        </div>
+                                        <div class="alert alert-danger" id="form-error">
+                                            <i class="fas fa-exclamation-circle"></i> Oops! There was a problem sending your message.
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-paper-plane"></i> Send Message
+                                    </button>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="hero-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-        </div>
-    </section>
 
-    <script src="script.js"></script>
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="left-items">
+                <span><i class="fas fa-code-branch"></i> main</span>
+                <span><i class="fas fa-times-circle"></i> 0 <i class="fas fa-exclamation-triangle"></i> 0</span>
+            </div>
+            <div class="right-items">
+                <span>JavaScript</span>
+                <span>UTF-8</span>
+                <span>LF</span>
+                <span><i class="far fa-bell"></i></span>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
 </body>
 </html>
