@@ -147,7 +147,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Initialize sidebar and explorer icon
-    showSidebar();
+    if (window.innerWidth <= 576) {
+        // On mobile, don't show sidebar by default
+        sidebarVisible = false;
+    } else {
+        showSidebar();
+    }
     activateExplorerIcon();
     
     // Add click event listeners to tabs
@@ -179,7 +184,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Show/hide sidebar based on which icon is clicked
             if (section === 'explorer') {
-                showSidebar();
+                if (window.innerWidth <= 576 && sidebarVisible) {
+                    // On mobile, toggle the sidebar
+                    hideSidebar();
+                } else {
+                    showSidebar();
+                }
             } else {
                 hideSidebar();
             }
@@ -336,6 +346,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }, 500);
+    
+    // Add click event listener to close sidebar when clicking outside on mobile
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 576 && sidebarVisible) {
+            // Check if click is outside sidebar and activity bar
+            const sidebarContainer = document.querySelector('.sidebar-container');
+            const activityBar = document.querySelector('.activity-bar');
+            
+            if (!sidebarContainer.contains(e.target) && !activityBar.contains(e.target)) {
+                hideSidebar();
+            }
+        }
+    });
     
     // Check if there's a hash in the URL to activate the correct tab
     function checkUrlHash() {
