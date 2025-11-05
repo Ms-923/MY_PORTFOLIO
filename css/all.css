@@ -1,25 +1,17 @@
-/* 
- * Combined CSS File for Mohammed Saif's Portfolio
- * Contains all styles from:
- * - styles.css
- * - timeline.css
- * - certificates.css
- * - contact-form.css
- * - theme.css
- */
+
 
 /* Base Styles */
 :root {
-    --primary-color: lightblue;
-    --accent-color-1: #FFD166;
-    --accent-color-2: #06D6A0;
-    --accent-color-3: #118AB2;
-    --accent-color-4: #073B4C;
-    --accent-color-5: #8338EC;
-    --text-color: #FFFFFF;
-    --light-text: #AAAAAA;
-    --background: #121212;
-    --card-background: #1E1E1E;
+    --primary-color: #4DA8DA; /* Balanced blue that's visible on dark backgrounds */
+    --accent-color-1: #FFD166; /* Warm yellow */
+    --accent-color-2: #66D9A8; /* Soft mint green */
+    --accent-color-3: #5DADE2; /* Sky blue */
+    --accent-color-4: #3498DB; /* Deeper blue */
+    --accent-color-5: #9B59B6; /* Purple */
+    --text-color: #FFFFFF; /* White text */
+    --light-text: #CCCCCC; /* Lighter gray for better contrast */
+    --background: #121212; /* Dark background */
+    --card-background: #1E1E1E; /* Slightly lighter card background */
     --border-radius: 8px;
     --transition: all 0.3s ease;
     --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -136,7 +128,7 @@ ul {
 
 .primary-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 75, 106, 0.3);
+    box-shadow: 0 10px 20px rgba(77, 168, 218, 0.3);
 }
 
 /* Sidebar Navigation */
@@ -476,7 +468,7 @@ main {
 }
 
 .skill-tag {
-    background-color: rgba(255, 75, 106, 0.1);
+    background-color: rgba(77, 168, 218, 0.15); /* Updated to match new primary color */
     color: var(--primary-color);
     padding: 8px 15px;
     border-radius: 20px;
@@ -499,7 +491,7 @@ main {
 
 .tool-item:hover {
     transform: translateY(-3px);
-    background-color: rgba(255, 75, 106, 0.1);
+    background-color: rgba(77, 168, 218, 0.15);
 }
 
 /* Project Styles in Resume */
@@ -520,7 +512,7 @@ main {
 }
 
 .tech-tag {
-    background-color: rgba(255, 75, 106, 0.1);
+    background-color: rgba(77, 168, 218, 0.15);
     color: var(--primary-color);
     padding: 5px 10px;
     border-radius: 20px;
@@ -549,7 +541,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255, 75, 106, 0.1);
+    background-color: rgba(77, 168, 218, 0.15);
     border-radius: 50%;
 }
 
@@ -607,7 +599,7 @@ main {
 }
 
 .project-tags span {
-    background-color: rgba(255, 75, 106, 0.1);
+    background-color: rgba(77, 168, 218, 0.15);
     color: var(--primary-color);
     padding: 5px 10px;
     border-radius: 20px;
@@ -747,7 +739,7 @@ main {
     justify-content: center;
     width: 50px;
     height: 50px;
-    background-color: rgba(255, 75, 106, 0.1);
+    background-color: rgba(77, 168, 218, 0.15);
     border-radius: 50%;
     margin-right: 20px;
     flex-shrink: 0;
@@ -843,7 +835,7 @@ main {
 .form-control:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(255, 75, 106, 0.2);
+    box-shadow: 0 0 0 3px rgba(77, 168, 218, 0.2);
 }
 
 textarea.form-control {
@@ -876,9 +868,9 @@ textarea.form-control {
 }
 
 .alert-danger {
-    background-color: rgba(255, 75, 106, 0.1);
-    color: var(--primary-color);
-    border: 1px solid rgba(255, 75, 106, 0.2);
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #E74C3C; /* Red for error messages */
+    border: 1px solid rgba(231, 76, 60, 0.2);
 }
 
 .alert i {
@@ -891,8 +883,14 @@ body.light-theme {
     --background: #f8f9fa;
     --card-background: #ffffff;
     --text-color: #333333;
-    --light-text: #666666;
+    --light-text: #555555; /* Darker for better contrast on light background */
     --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    --primary-color: #3498DB; /* Slightly darker blue for light mode */
+    --accent-color-1: #F39C12; /* Adjusted for light mode */
+    --accent-color-2: #2ECC71; /* Adjusted for light mode */
+    --accent-color-3: #3498DB; /* Adjusted for light mode */
+    --accent-color-4: #2980B9; /* Adjusted for light mode */
+    --accent-color-5: #8E44AD; /* Adjusted for light mode */
 }
 
 /* Light Theme Overrides */
@@ -907,7 +905,8 @@ body.light-theme .nav-icon {
 
 body.light-theme .nav-icon:hover,
 body.light-theme .nav-icon.active {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(52, 152, 219, 0.1);
+    color: var(--primary-color);
 }
 
 body.light-theme .shape {
@@ -920,31 +919,81 @@ body.light-theme .badge-card,
 body.light-theme .timeline-content,
 body.light-theme .contact-form {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(52, 152, 219, 0.1);
+}
+
+body.light-theme .project-card:hover,
+body.light-theme .certificate-card:hover,
+body.light-theme .badge-card:hover {
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.15);
+    border-color: rgba(52, 152, 219, 0.2);
 }
 
 body.light-theme .form-control {
-    background-color: rgba(0, 0, 0, 0.02);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border: 1px solid rgba(52, 152, 219, 0.2);
+    color: var(--text-color);
+}
+
+body.light-theme .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
 }
 
 body.light-theme .social-links a {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(52, 152, 219, 0.1);
+    color: var(--light-text);
 }
 
 body.light-theme .social-links a:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(52, 152, 219, 0.2);
+    color: var(--primary-color);
 }
 
 body.light-theme .tool-item {
-    background-color: rgba(0, 0, 0, 0.03);
+    background-color: rgba(52, 152, 219, 0.05);
+    border: 1px solid rgba(52, 152, 219, 0.1);
 }
 
 body.light-theme .tool-item:hover {
-    background-color: rgba(255, 75, 106, 0.1);
+    background-color: rgba(52, 152, 219, 0.1);
+    border-color: rgba(52, 152, 219, 0.2);
 }
 
 body.light-theme .contact-method i {
-    background-color: rgba(255, 75, 106, 0.1);
+    background-color: rgba(52, 152, 219, 0.1);
+    color: var(--primary-color);
+}
+
+body.light-theme .skill-tag,
+body.light-theme .tech-tag,
+body.light-theme .project-tags span {
+    background-color: rgba(52, 152, 219, 0.1);
+    color: var(--primary-color);
+    border: 1px solid rgba(52, 152, 219, 0.2);
+}
+
+body.light-theme .certificate-icon,
+body.light-theme .badge-icon {
+    background-color: rgba(52, 152, 219, 0.1);
+    color: var(--primary-color);
+}
+
+body.light-theme .certificate-icon i,
+body.light-theme .badge-icon i {
+    color: var(--primary-color);
+}
+
+body.light-theme .timeline::before {
+    background-color: rgba(52, 152, 219, 0.2);
+}
+
+body.light-theme .timeline-dot {
+    background-color: var(--primary-color);
+}
+
+body.light-theme .timeline-date {
+    color: var(--primary-color);
 }
 
 /* Transition for theme switching */
