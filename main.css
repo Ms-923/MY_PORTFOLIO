@@ -994,10 +994,12 @@ textarea.form-control {
         min-width: auto !important;
         transform: translateX(-100%);
         transition: transform 0.3s ease;
+        display: none;
     }
     
     .sidebar-container.visible {
         transform: translateX(0);
+        display: flex;
     }
     
     .sidebar {
